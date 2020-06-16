@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="log_data_ON" value="false" type="bool" />
+  <param name="log_filename" value="Log_June10_run1" type="string" />
+
+
+  <node pkg="braking_robot" type="braking_robot" name="braking_robot" required="true" output="screen" />
+  <node pkg="braking_robot" type="fk_node" name="fk_node" required="true" output="screen" />
+
+
+  <node pkg="ati_ft_sensor" type="read_ft_sensor" name="read_ft_sensor">
+    <param name="fs_pub_freq"    value="50.0"  />
+    <param name="fs_cutoff_freq" value="15.0"  />
+    <param name="fs_read_freq"   value="1000.0" />
+    <param name="/read_ft_sensor/calibration_matrix_filepath" value="/home/caos/catkin_ws/src/ati_ft_sensor/cal_files/CalibrationMatrix_FT4456.cal" />
+  </node>
+
+</launch>
